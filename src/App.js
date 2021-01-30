@@ -47,6 +47,7 @@ const  App = createClass({
     return {
       markdown: placeholder,
       lastClicked: '',
+      light: true
     }
   },
   
@@ -189,6 +190,8 @@ const  App = createClass({
         SSM.selectionCaretStore('', '', '');
         this.setState({
           markdown: 
+            e.target.className == 'fa fa-lightbulb-o' ?    
+            this.setState({ light: !this.state.light}):
             e.target.className == 'fa fa-link' ?
             this.state.markdown.substring(0, startPos - 3 - usersLink.length) + usersLink + 
             this.state.markdown.substring(endPos + 1, myField.value.length) :
@@ -250,18 +253,21 @@ const  App = createClass({
   
   render() {
     return (
-      <div>
+      <div className={this.state.light?'bodyOn':'bodyOff'}>
         <div className='title-div'>
-          <img className='title' src='https://goo.gl/QongrD' />
           <div className='title text'>
-          Markdown Previewer & Editing Toolbar
+            Projeto Editor React Markdown - Luiz Rosalba 
           </div>
         </div>
         <div className='editorWrap'>
-          <Toolbar onClick={this.handleClick}/>
-          <Editor markdown={this.state.markdown} onChange={this.handleChange} />
+          <div className='formatadorTexto'>
+            <Toolbar onClick={this.handleClick}/>
+            <Editor markdown={this.state.markdown} onChange={this.handleChange} />
+          </div>
+          <Preview  markdown={this.state.markdown}/>
         </div>
-        <Preview  markdown={this.state.markdown}/>
+        
+        <div style={{textAlign: 'center' }}>LuizRosalba@gmail.com - 2021</div> 
       </div>
     )
   }
@@ -314,18 +320,39 @@ const Toolbar = createClass({
         <div className="spacer" />
         <i title="Bulleted List" onClick={this.props.onClick} className="fa fa-list"/>
         <i title="Numbered List" onClick={this.props.onClick} className="fa fa-list-ol"/>
+        <i title="Change Light!" onClick={this.props.onClick} className="fa fa-lightbulb-o"/>
       </div>
     )
   }
 });
 
 class Editor extends React.Component {
+  constructor(props){
+    super(props);
+
+    this.textAreaRef = React.createRef();
+    }
+
+    componentDidMount() {
+      if (this.multilineTextarea) {
+        this.multilineTextarea.style.height = 'auto';
+      }
+    }
+
+    textAreaChange = (ta) =>  {
+        ta.style.height = "auto";
+        ta.style.height = ta.scrollHeight + "px";
+    }
+
+    
   render () {
     return (
       <textarea 
-        value={this.props.markdown}
-        onChange={this.props.onChange}
-        type="text"/>
+      ref={this.textAreaRef}
+      value={this.props.markdown}
+      onInput={this.props.onChange}
+      onChange={(e) => this.textAreaChange(e.target)} 
+      type="text"/>
     )
   }
 }
@@ -343,16 +370,15 @@ class Preview extends React.Component {
 }
 
 const placeholder = 
-`# Welcome to my React Markdown Previewer!
+`# Projeto de Editor Markdown em React
 
-## This is a sub-heading...
-### And here's some other cool stuff:
+## Subtítulo
+### Coisas Legais que ele faz : 
   
-Heres some code, \`<inline style>\`, between 2 backticks.
+Código Inline, \`<inline style>\`
 
 \`\`\`
-// this is multi-line code:
-
+// Código multi-linha
 function anotherExample(firstLine, lastLine) {
   if (firstLine == '\`\`\`' && lastLine == '\`\`\`') {
     return multiLineCode;
@@ -360,40 +386,36 @@ function anotherExample(firstLine, lastLine) {
 }
 \`\`\`
   
-You can also make text **bold**... whoa!
-Or _italic_.
-Or... wait for it... **_both!_**
-And feel free to go crazy ~~crossing stuff out~~.
+**Negrito**
+_Itálico_.
+**_Negrito e Itálico!_**
+~~Cruzado~~.
 
-The coolest part is probably the toolbar, so go ahead and check that out. There are libraries out there that embed pre-coded toolbards like [SimpleMDE](https://simplemde.com/), but I decided to try to undertake the challenge myself, so this is definitely not perfect (some scrolling issues), but for the most part it works.
-
-There's also [links](https://www.freecodecamp.com/no-stack-dub-sack), and
+Links: [links](https://www.freecodecamp.com/no-stack-dub-sack), e
 > Block Quotes!
 
-And if you want to get really crazy, even tables:
+Tabelas ! 
 
-Wild Header | Crazy Header | Another Header?
+A | B | C
 ------------ | ------------- | ------------- 
-Your content can | be here, and it | can be here....
-And here. | Okay. | I think we get it.
+E | F | G
+H | I | J
 
-- And of course there are lists.
-  - Some are bulleted.
-     - With differnt indentation levels.
-        - That look like this.
+- Listas
+  - Distintas 
+     - Níveis diferentes
 
 
-1. And there are numbererd lists too.
-1. The tool bar keeps adding 1s.
-1. But the list goes on...
-- Even if you use dashes or asterisks.
-* And last but not least, let's not forget embedded images:
+1. Listas numeradas 
+1. Adicionando a primeira
+1. e mais ! 
 
-![React Logo w/ Text](https://goo.gl/Umyytc)
+Imagens 
+![React Logo w/ Text](https://www.logo.wine/a/logo/React_(web_framework)/React_(web_framework)-Logo.wine.svg)
 
-Well, that's it! Thanks for visiting my project. The code is in desperate need of a refactor, so maybe I will improve later and add additional functionality like syntax highlighting and fix some of the bugs. For this first round, I was just exploring these techniques and focusing on getting things working. 
 
-Feel free to play around and leave some comments if you have any thoughts!
+Este código é uma implementação do código disponível de https://codepen.io/freeCodeCamp/full/GrZVVO
+de coded by @no-stack-dub-sack (github) / @no_stack_sub_sack 
 `
 
 

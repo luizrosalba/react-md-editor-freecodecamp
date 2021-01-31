@@ -415,7 +415,7 @@ H | I | J
 1. e mais ! 
 
 Imagens 
-![React Logo w/ Text](https://www.logo.wine/a/logo/React_(web_framework)/React_(web_framework)-Logo.wine.svg)
+![](https://i.ytimg.com/vi/hbIcCZRRLCw/maxresdefault.jpg)
 
 
 Este código é uma implementação do código disponível de https://codepen.io/freeCodeCamp/full/GrZVVO

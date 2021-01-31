@@ -253,6 +253,7 @@ const  App = createClass({
   
   render() {
     return (
+      
       <div className={this.state.light?'bodyOn':'bodyOff'}>
         <div className='title-div'>
           <div className='title text'>
@@ -348,6 +349,7 @@ class Editor extends React.Component {
   render () {
     return (
       <textarea 
+      id= "editor"
       ref={this.textAreaRef}
       value={this.props.markdown}
       onInput={this.props.onChange}
@@ -360,11 +362,13 @@ class Editor extends React.Component {
 class Preview extends React.Component {
   render () {
     return (
-      <div className='previewWrap'>
-        <div className='preview'>
-          <div dangerouslySetInnerHTML={{__html: marked(this.props.markdown, { renderer: renderer })}} />
-        </div>
-      </div>
+      <div
+      dangerouslySetInnerHTML={{
+        __html: marked(this.props.markdown, { renderer: renderer })
+      }}
+      id='preview'
+      className='preview'
+    />
     )
   }
 }

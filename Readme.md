@@ -1,12 +1,39 @@
+# # Projeto de Editor Markdown em React
+
+Este projeto é editor MarkDown feito em React a partir do projeto de 
+
+- https://codepen.io/no_stack_dub_sack/pen/JbPZvm?editors=0110
+
+Este projeto faz parte do portfolio de Luiz Rosalba 
+
+- LuizRosalba@gmail.com 
+- 
+e é requisito para formação Front-End Libraries Certification do FreeCodeCamp.org : 
+
+- https://www.freecodecamp.org/learn/front-end-libraries/front-end-libraries-projects/build-a-markdown-previewer
+
+
+Muito ainda há de ser melhorado neste projeto, contribuições e sugestões são muito bem-vindas ! 
+
+Este projeto é capaz de rodar diretamente em um navegador 
+
+Clone este repositório : 
+
+- git clone https://github.com/luizrosalba/react-md-editor-freecodecamp.git
+
+Instale as dependências na pasta raiz 
+
+- npm install 
+
+npm install node-sass marked create-react-class --save
+
+- Rode o programa 
+
+- npm start
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-npm install marked
-
-npm install create-react-class --save
-
-npm install node-sass
 
 ## Available Scripts
 

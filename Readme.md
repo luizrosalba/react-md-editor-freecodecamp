@@ -4,6 +4,10 @@ Este projeto é editor MarkDown feito em React a partir do projeto de
 
 - https://codepen.io/no_stack_dub_sack/pen/JbPZvm?editors=0110
 
+Você pode conferi-lo em : 
+
+- https://codepen.io/luizrosalba/pen/PobwoWm
+
 Este projeto faz parte do portfolio de Luiz Rosalba 
 
 - LuizRosalba@gmail.com 

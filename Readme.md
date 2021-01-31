@@ -35,6 +35,8 @@ npm install node-sass marked create-react-class --save
 
 - npm start
 
+
+![](https://raw.githubusercontent.com/luizrosalba/react-md-editor-freecodecamp/master/src/img/tela.PNG)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
